@@ -1,0 +1,111 @@
+<?php
+	function console($tab)
+	{
+	?>
+		<fieldset id="pole">
+		<legend><?php echo $tab['console']; ?></legend>
+		<fieldset class="field" id="dbname_field">
+			<legend><?php echo $tab['dbname']; ?></legend>
+			<input type="text" name="dbname" id="dbname" value="<?php echo $_SESSION['base']?>">
+		</fieldset>
+		<fieldset class="field" id="tname_field">
+			<legend><?php echo $tab['tablename'];?></legend>
+			<input type="text" name="tname" id="tname">
+		</fieldset>
+		
+		<fieldset class="field" id="textarea_field">
+			<legend><?php echo $tab['query'];?></legend>
+			<textarea name="console" id="console"></textarea>
+		</fieldset>
+		<input type="button" value="Select *" name="selecta" onclick="selectall();">
+		<input type="button" value="Select" name="select" onclick="selectpwi_users();">
+		<input type="button" value="Insert" name="insert">
+		<input type="button" value="Update" name="update">
+		<input type="button" value="<?php echo $tab['clear']; ?>" name="clear" onclick="clearConsole();">
+		<input type="button" value="<?php echo $tab['go']; ?>" name="submit" onclick="executeQuery();">
+		</fieldset>
+	<?php
+	}
+
+	function settings($tab)
+	{
+		if (isset($_SESSION['base']))
+		{
+		?>
+		<fieldset id="edhaslo">
+		<legend><?php echo $tab['changepass'];?></legend>
+		<input type ="password" id="txtenter" class="inputbox" onkeyup="settingsVisualization();">
+		<input type ="password" id="txtenter1" class="inputbox" onkeyup="settingsVisualization();">
+		<br>
+		<canvas id="mycanvas" width="200" height="20"style="border:1px solid #c3c3c3;">problem</canvas>
+		<input type="button" value="zmien" name="passchng" onclick="editPassword()";>
+		</fieldset>
+		<input id="can" class="hide" value="0">
+		<div id = "popraw"></div>
+		<?php
+		}
+		else
+			echo $tab['selbasewarn'];
+	}
+	
+	function createTable($tab)     //tworzenie tabeli - dane wej
+	{
+		?>
+		<fieldset id="createtable">
+		<legend><?php echo $tab['createtable'];?></legend>
+		 
+		<?php 
+			if (isset($_SESSION['base']))
+			{
+				echo $tab['selbase'].': '.$_SESSION['base'];
+				?><br>
+				<?php echo $tab['tablename'].': ';?>
+				<input type="text" name="tableName" id="tableName">
+				<br><?php echo $tab['colsno'].':  ';?>
+				<input type="text" name="colNo" id="colNo">
+				<br>
+				<input type="button" value="OK" onclick="tableForm();">
+				<?php
+			}
+			else
+				echo $tab['selbasewarn'];
+	}
+	
+	function createTableForm($columns,$tname) //vizulalizacja formularza tworzenia tabeli sql
+	{
+		echo 'Baza <div id="currentDB">'.$_SESSION['base'].'</div><br>';
+		echo 'Tabela <div id="currentT">'.$tname.'</div><br>';
+		echo 'Kolumn <div id="currentCol">'.$columns.'</div><br>';
+		?>
+		<br>
+		<table style="width:100%">
+		<tr>
+		<th>nazwa kolumny</th>
+		<th>typ</th>
+		<th>NOT NULL</th>
+		</tr>
+		<?php
+		for($i=0;$i<$columns;$i++)
+		{
+		?>
+		<tr>
+		<td><input type="text" id ="nazwa<?php echo $i?>"></td>
+		<td>
+		<select id ="select<?php echo $i?>">
+			<option value="INT">INT</option>
+			<option value="VCHAR(10)">VCHAR(10)</option>
+			<option value="BOOL">BOOL</option>
+			<option value="TEXT">TEXT</option>
+		</select>
+		</td>
+		<td><input type="checkbox" id ="null<?php echo $i?>"></td>
+		</tr>
+		<?php
+		}
+		?>
+		</table><br>
+		<input type="button" value="OK" onclick="SQLcreateTable();">
+		<div id = "showQuery"></div>
+		<?php
+	}
+?>

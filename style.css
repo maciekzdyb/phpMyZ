@@ -1,0 +1,122 @@
+body{
+	background-image: url("img/dark.jpg");
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    width: 900px;
+    margin: auto;
+}
+
+h1{
+	text-shadow: 0.15em 0.15em 0.15em #333300;
+}
+
+ol li {
+	width: 200px;
+	background: #a5a5a5;
+    padding: 5px;
+    margin: 5px;
+}
+
+ol li:hover {
+	width: 200px;
+	background: #cccccc;
+    padding: 5px;
+    margin: 5px;	
+}
+
+th, td {
+	text-align: center;
+}
+
+.hide {
+	display: none;
+}
+
+.comment{
+	display: inline;
+	width: 180px;
+}
+
+.inputbox{
+	width: 200px;
+}
+
+#siteHeader{
+    width: 900px;
+    background-color: rgba(200,200,235,0.75);
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px white;
+}
+
+#content{
+    width: 700px;
+    height: 640px;
+    background-color: rgba(255,255,255,0.9);
+    margin-top: 10px;
+    display: inline;
+    float: left;
+	border-radius: 10px;
+    box-shadow: 0 0 10px white;
+}
+
+#navigation{
+    width: 190px;
+    height: 640px;
+    background-color: rgba(250,250,250,0.75);
+    display: inline;
+    float: right;
+    margin-top: 10px;
+    margin-left: 10px;
+	border-radius: 10px;
+    box-shadow: 0 0 10px white;
+}
+
+#pole {
+    margin-top: 10px;
+    margin-left: 40px;	
+	width: 600px;
+	height:400px;
+}
+
+#dbname {
+	width: 150px;
+}
+
+#dbname_field {
+	display: inline;
+	width: 160px;
+}
+
+#tname {
+	width: 150px;
+}
+
+#tname_field {
+	margin-left: 155px;
+	display: inline;
+	width: 160px;
+}
+
+#console {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 500px;
+	height: 100px;
+}
+
+#textarea_field {
+	width: 510px;
+	height: 150px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+div #contentdiv{
+	overflow-y: auto;
+	overflow-x: auto;
+}

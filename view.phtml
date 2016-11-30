@@ -1,0 +1,38 @@
+<?php
+    function createLogoutForm($tab)
+    {
+        $username=$_SESSION['username'];
+        echo "<p>".$tab['logged_as']." ".$username."</p>\n";
+        ?>
+            <form action="index.php" method="post">
+                <input type="submit" name="logoutSubmit" value="<?php echo $tab['logout'] ?>">
+				<input type="button" name="setingsButton" value="<?php echo $tab['setings'] ?>" onclick=ajax_get('menu=3');>
+            </form>
+        <?php
+    }  
+
+    function createLoginForm($tab)
+    {
+        ?>
+            <form action="index.php" method="post">
+                <legend for="username"><?php echo $tab['username'] ?></legend>
+                <input type="text" name="username" id="username"><br>
+                <legend for="password"><?php echo $tab['password'] ?></legend>
+                <input type="password" name="password" id="password"><br>
+                <input type="submit" name="loginSubmit" value="<?php echo $tab['value_loginSubmit'] ?>">
+            </form>
+        <?php
+    }
+
+	function createMenu($tab)
+	{
+		?>
+		<br>
+		<input type="button" name="DB_Button" value="<?php echo $tab['dbases'] ?>" onclick="ajax_get('menu=1');">
+		<br>
+		<input type="button" name="C_Button" value="<?php echo $tab['console'] ?>" onclick="ajax_get('menu=2');">
+		<br>
+		<input type="button" name="T_Button" value="<?php echo $tab['createtable'] ?>" onclick="ajax_get('menu=4');">
+		<?php
+	}
+?>
